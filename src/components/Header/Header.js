@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import "./header.scss";
+import "./css/styles/app.scss";
+import { Route, Link } from 'react-router-dom';
 
 // const imgMyimageexample = require('../assets/imageexample.jpg');
 const divStyle = {
@@ -20,34 +21,93 @@ const divStyle = {
 
 
 class Header extends Component {
+
+    constructor() {
+        super();
+        // this.addActiveClass = this.addActiveClass.bind(this);
+        this.state = {
+            sample: localStorage.getItem("sample") || 0,
+            active: false,
+        };
+    }
+    
+    toggleClass() {
+        const currentState = this.state.active;
+        this.setState({ active: !currentState });
+    };
+    
+    toggleListClass() {
+      const currentState = this.state.active;
+      this.setState({ active: !currentState });
+    };
+
     render() {
         return (
             <div className={"parent"}>
                 <div className={"child"}>
-                    <div className={'container'}>
-                        <nav className="navbar navbar-default">
-                            <div className="container">
-                                <div className="navbar-header">
-                                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                        <span className="sr-only">Toggle navigation</span>
-                                        <span className="icon-bar"></span>
-                                        <span className="icon-bar"></span>
-                                        <span className="icon-bar"></span>
-                                    </button>
+                <section className={"navigation"}>
+                        <div className={"nav-container"}>
+                        <div className={"brand"}>
+                            <a href="#!">Logo</a>
+                        </div>
+                        <nav className={this.state.active ? 'nav nav-main nav-main-mobile' : 'nav'}>
+                        {/* <nav className={'nav-main-ul'}> */}
+                        <div className={"nav-mobile"}><a id="nav-toggle" href="#!" className={this.state.active ? 'active' : null}
+                                            onClick={this.toggleClass.bind(this)}><span></span></a></div>
+                            {/* <div className={"nav-mobile"}><a id="nav-toggle" href="#!"><span></span></a></div> */}
+                            <ul className={"nav-list"}>
+                            <li>
+                                <a href="#">Home</a>
+                                {/* <Link to="/login">Home</Link> */}
+                            </li>
+                            <li>
+                                <a href="#!">About</a>
+                            </li>
+                            <li>
+                                <a onClick={this.toggleListClass.bind(this)} href="#!">Services</a>
+                                <div className={"nav-dropdown"}><a id="nav-dropdown" href="#!" className={this.state.active ? 'active' : null}
+                                            onClick={this.toggleListClass.bind(this)}><span></span></a>
+                                <ul className={"nav-dropdown"}>
+                                <li>
+                                    <a href="#!">Web Design</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Web Development</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Graphic Design</a>
+                                </li>
+                                </ul>
                                 </div>
-                                <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <a className="navbar-brand pull-left" href="#">Brand</a>
-                                    <ul className="nav nav-pills pull-left">
-                                        <li role="presentation"><a href="#">Home</a></li>
-                                        <li role="presentation"><a href="#/login">About</a></li>
-                                        {/* <li><Link to="/">Home</Link></li>
-                                <li><Link to="login">Login</Link></li>
-                                <li><Link to="example">Click Me!</Link></li> */}
-                                    </ul>
-                                </div>
-                            </div>
+                            </li>
+                            <li>
+                                <a href="#!">Pricing</a>
+                            </li>
+                            <li>
+                                <a href="#!">Portfolio</a>
+                                <ul className={"nav-dropdown"}>
+                                <li>
+                                    <a href="#!">Web Design</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Web Development</a>
+                                </li>
+                                <li>
+                                    <a href="#!">Graphic Design</a>
+                                </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#!">Contact</a>
+                            </li>
+                            {/* <li>
+                                <Link to="/login">Login</Link>
+                                {/* <button class="btn btn-danger navbar-btn">Login</button> 
+                            </li> */}
+                            </ul>
                         </nav>
-                    </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         );

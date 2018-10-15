@@ -1,22 +1,20 @@
 import React from 'react';
+import "./searchbar.scss";
 import { searchBarTabs } from "../../data/searchbar";
 import { custom_request } from '../../services/searchbar-service';
 import InstallTechSearchBar from './InstallTechSearchBar';
 import IntentSearchBar from './IntentSearchBar';
 import { INSTALLTECH, INTENT } from "../../placeholders";
-import "./searchbar.scss";
 
 
 export default class SearchBar extends React.Component {
-
     constructor(props) {
         super(props);
         // this.handleChange = this.handleChange.bind(this);
         this.handleTabClick = this.handleTabClick.bind(this);
         this.getOptions = this.getOptions.bind(this);
         this.state = {
-            currentTab: null,
-            currentLiState: null
+            currentTab: null
         }
     }
 
@@ -48,19 +46,13 @@ export default class SearchBar extends React.Component {
 
     handleTabClick = (e) => {
         this.setState({ currentTab: e.target.getAttribute('data-key') });
-        const currentLiState = this.state.active;
-        this.setState({ active: (e.target.getAttribute('class') == 'active' ? '' : active ) });
     }
-
-    toggleClass() {
-        const currentLiState = this.state.active;
-        this.setState({ active: !currentLiState });
-    };
 
     render = () => {
         let tabs_data = searchBarTabs.map((item, i) =>
-            <li className={item.name} key={i} onClick={this.handleTabClick} data-key={item.name}>{item.name}</li>
+            <li key={i} onClick={this.handleTabClick} data-key={item.name}>{item.name}</li>
             // onClick={this.toggleClass.bind(this)}><span></span></a></div>
+
         );
 
         if (this.state.currentTab == INSTALLTECH) {
@@ -73,12 +65,12 @@ export default class SearchBar extends React.Component {
                 </div>);
         } else {
             return (
-                <div className={"search-div-center"}>
-                    <div className={"list-inline list"}>
-                        {tabs_data}
-                    </div>
-                    <IntentSearchBar getOptions={this.getOptions} />
-                </div>);
+            <div className={"search-div-center"}>
+                <div className={"list-inline list"}>
+                    {tabs_data}
+                </div>
+                <IntentSearchBar getOptions={this.getOptions} />
+            </div>);
         }
     }
 }

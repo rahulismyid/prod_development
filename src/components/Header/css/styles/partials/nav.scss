@@ -1,0 +1,216 @@
+
+.navigation{
+    height: $nav-height;
+    background: $nav-background;
+}
+
+.brand{
+    position: absolute;
+    padding-left: 20px;
+    float:left;
+    line-height: $nav-height;
+    text-transform: uppercase;
+    font-size: 1.4em;
+
+    a,
+    a:visited{
+        color: $nav-font-color;
+        text-decoration: none;
+    }
+}
+
+.nav-container{
+    max-width: $content-width;
+    margin: 0 auto;
+}
+
+nav{
+    float:right;
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li{
+            float: left;
+            position: relative;
+            a,
+            a:visited{
+                display: block;
+                padding: 0 20px;
+                line-height: $nav-height;
+                background: $nav-background;
+                color: $nav-font-color;
+                text-decoration: none;
+
+                &:hover{
+                    background: $link-hover-color;
+                    color: $nav-font-color;
+                }
+                &:not(:only-child):after{
+                    padding-left:4px;
+                    content: ' ▾';
+                }
+            }
+            ul li{
+                min-width: 190px;
+                a{
+                    padding: 15px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+.nav-list {
+
+    > li {
+        &:hover {
+            #menu-list {
+                display: block;
+            }
+            .nav-dropdown {
+                display: block;
+            }
+
+        }
+    }
+}
+
+.nav-dropdown{
+    position: absolute;
+    display: none;
+    z-index: 1;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+.nav-mobile{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $nav-background;
+    height: $nav-height;
+    width: $nav-height;
+}
+
+@media only screen and (max-width: 798px){
+    .nav-main-mobile {
+        background: transparent;
+    }
+
+    .nav-mobile{
+        display: block;
+    }
+
+    // .nav-main > ul > li {
+    //     float: right;
+    //     text-align: right;
+    // }
+
+    .nav-main  {
+        width: 100%;
+        background-color: $nav-background;
+        height: 200px;
+        color: #fff;
+        
+        > ul {
+            float: center;
+            display: grid;
+            position: relative;
+            padding: 0;
+            top: 30px;
+            right: 0; 
+
+        }
+    }
+
+    nav{
+        width: 100%;
+        padding: $nav-height 0 15px;
+
+        ul {
+
+            display: none;
+
+            li {
+                float: none;
+
+                a {
+                    padding: 15px;
+                    line-height: 20px;
+                }
+                ul li a{
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+    .nav-dropdown{
+        position: static;
+    }  
+}
+
+@media screen and (min-width: $breakpoint){
+    .nav-list{
+        display: block !important;
+        
+    }
+}
+
+#nav-toggle{
+    position: relative;
+    left: -20px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+
+    span,
+    span:before,
+    span:after{
+        cursor: pointer;
+        border-radius: 1px;
+        height: 5px;
+        width: 35px;
+        background: $nav-font-color;
+        position: absolute;
+        display: block;
+        content: '';
+        @include transition(all, 300ms, ease-in-out);
+    }
+    span:before{
+        top: -10px;
+    }
+    span:after{
+        bottom: -10px;
+    }
+    &.active span{
+        background-color: transparent;
+        &:before,
+        &:after{
+            top: 0;
+        }
+        &:before{
+            transform: rotate(45deg);
+        }
+        &:after{
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.parent {
+    position: relative;
+    // background-color: rgba(50, 70, 200, 0.3);
+    // background-color: blue;
+    background-image: url('http://wallpaperheart.com/wp-content/uploads/2018/04/awesome-wallpaper-hd-for-desktop-full-screen-desktop-wallpaper-hd-full-screen-nature.jpg');
+    width: 100%;
+    height: 100vh;
+}
+.child {
+    height: 100%;
+    // background-color: rgba(50, 70, 200, 0.3);
+    // background-color: blue;
+}
