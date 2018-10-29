@@ -19,7 +19,7 @@ export function custom_request(options) {
                 // An executor function receives a cancel function as a parameter
                 cancel = c;
             }),
-            timeout: 1
+            timeout: 10000
         })
         .then((response) => {
             return response;

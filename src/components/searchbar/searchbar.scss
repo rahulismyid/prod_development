@@ -1,25 +1,78 @@
 .search-div-center {
     position: absolute;
     left: 50%;
-    top: 30%;
+    top: 50%;
     transform: translate(-50%, -50%);
-
     width: 50%;
-    // height: 50%;
-
+    height: 0;
     padding: 20px;  
     // background: red;
-    color: white;
+    color: black;
     text-align: center;
     // box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 
-    .list {
+    .group-inp-btn {
+        display: inline-flex;
+        width: 100%;
+    }
+
+    .group-inp-btn button{
+        background: white;
+        height: 34px;
+        width: 70px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .dropdownClass {
         text-align: left;
+        margin: 0px;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    }
+
+    .myclass {
+        background: aliceblue;
+        border-radius: 4px;
+    }
+
+    .myclass li input{
+        margin: 4px 6px 0px -10px
+    }
+
+    .myclass li {
+        color: green;
+        list-style: none;
+        font-size: 14px;
+        margin: 0 0 0 -35px;
+        text-align: justify;
+        padding-top: 2px;
+    }
+
+    .list {
+        text-align: center;
         text-transform: capitalize;
     }
 
-    li:first-child {
-        padding-left: 5px;
+    li:active {
+        color: #e7e7e7;
     }
 
     li:hover {
@@ -33,4 +86,57 @@
         font-size: 20px;
         color: black;
     }
+
+    li:nth-child(1) {
+        // color: red;
+        margin-top: 10px;
+    }
+
+    li:nth-child(2) {
+        // color: red;
+    }
+
+    // .fancy span:before,
+    // .fancy span:after {
+    //   content: "";
+    //   position: absolute;
+    //   height: 5px;
+    //   border-bottom: 1px solid white;
+    // //   border-top: 1px solid white;
+    //   top: 0;
+    //   width: 150px;
+    // }
+
+    // .fancy span:before {
+    //     right: 65%;
+    //     margin-right: 15px;
+    //     top: 30%;
+    // }
+
+    // .fancy span:after {
+    //     left: 65%;
+    //     margin-right: 15px;
+    //     top: 30%;
+    // }
+}
+
+
+
+#multichecbox .property-panel-content {
+    overflow: initial;
+}
+#multichecbox .col-lg-9 {
+    min-height: 250px;
+}
+#multichecbox #multigroup {
+    margin: 0 auto;
+    width: 300px !important;
+    padding-top: 15px;
+}
+
+#multiselection .property-panel-content {
+    width: 300px;
+}
+#multichecbox .property-section{
+    left:0px;
 }

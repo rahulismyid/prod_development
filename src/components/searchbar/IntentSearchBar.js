@@ -20,8 +20,11 @@ export default class InstallTechSearchBar extends React.Component {
             <div>
                 <AsyncSelect
                     isMulti
+                    onFocus={this.props.maybeLoadOptions}
                     cacheOptions
-                    defaultOptions
+                    placeholder={this.props.placeholder}
+                    isLoading={this.props.isLoading}
+                    // defaultOptions
                     loadOptions={this.props.getOptions}
                 />
             </div>
